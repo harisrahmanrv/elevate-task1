@@ -1,0 +1,37 @@
+IP Range - 192.168.0.0/24
+
+
+IP addresses and open ports found
+IP Address	Open Ports		Service Names
+192.168.0.1	1, 53, 80, 443, 49152	tcpmux, domain (DNS), http, https, unknown (likely UPnP)
+192.168.0.120	None (all closed)	N/A
+192.168.0.152	None (all closed)	N/A
+192.168.0.141	135, 139, 445, 7070	msrpc, netbios-ssn, microsoft-ds, realserver
+
+
+
+services running on those ports
+Port	Service			Common Use
+1	tcpmux			Rare multiplexing service, rarely used
+53	DNS (domain)		Domain Name System, translates domain names
+80	HTTP			Web traffic (unencrypted)
+443	HTTPS			Secure web traffic
+49152	UPnP (likely)		Universal Plug and Play, device discovery
+135	MSRPC			Microsoft Remote Procedure Call
+139	NetBIOS-SSN		Windows file/printer sharing
+445	SMB (microsoft-ds)	Windows file sharing and network communication
+7070	RealServer		RealNetworks streaming server port
+
+
+potential security risks
+Port	Risk Description
+1	Rarely used, but if open could be abused to enumerate services or act as an entry point
+53	DNS service misconfiguration can lead to DNS poisoning or amplification attacks
+80	Unencrypted web interface; vulnerable to sniffing and MITM attacks
+443	If improperly configured, could be vulnerable to SSL/TLS exploits
+49152	UPnP can allow internal devices to be exposed externally if misconfigured, risk of remote attacks
+135	MSRPC has been exploited in the past for remote code execution (e.g., Blaster worm)
+139	NetBIOS leaks system info, can be used for lateral movement or SMB exploits
+445	SMB is a common ransomware attack vector; unpatched services can be exploited
+7070	Streaming server vulnerabilities if outdated
+
